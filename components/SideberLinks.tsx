@@ -6,8 +6,10 @@ import Link from "next/link"
 import { useMemo } from "react"
 import { AnalysisIcon, File1Icon, PieIcon,FolderLibraryIcon, SettingsIcon,UserSwitch, LogoutIcon } from "./customIcons"
 import { usePathname } from "next/navigation"
+import { useSidebarStore } from "../stores/sidebar.store"
 
 const TopSidebarLinks = () => {
+    const { isSidebarOpen } = useSidebarStore()
     const path = usePathname();
     const links = useMemo(() => {
         return [
@@ -36,7 +38,8 @@ const TopSidebarLinks = () => {
                 return (
                     <Link href={link.href} key={i}>
                         <Button size="md"
-                            justifyContent="start"
+                        px={isSidebarOpen ? "4" : "0"}
+                            justifyContent={isSidebarOpen ? "start" : "center"}
                             bg={isActive ? "bg.subtle" : ""}
                             variant={"ghost"}
                             color={isActive ? "fg" : "#6B7280"}
@@ -44,7 +47,7 @@ const TopSidebarLinks = () => {
                             <Icon asChild color="#6B7280">
                                 {link.icon}
                             </Icon>
-                            {link.label}
+                            {isSidebarOpen && link.label}
                         </Button>
                     </Link>
                 )
@@ -54,6 +57,7 @@ const TopSidebarLinks = () => {
 }
 
 const BottomSibarLinks = () => {
+    const { isSidebarOpen } = useSidebarStore()
     const path = usePathname();
 
     const bottomLinks = useMemo(() => {
@@ -70,7 +74,7 @@ const BottomSibarLinks = () => {
                 return (
                     <Link href={link.href} key={i}>
                         <Button size="md"
-                            justifyContent="start"
+                            justifyContent={isSidebarOpen ? "start" : "center"}
                             bg={isActive ? "#6B7280" : ""}
                             variant={"ghost"}
                             color={isActive ? "fg" : "#6B7280"}
@@ -78,7 +82,7 @@ const BottomSibarLinks = () => {
                             <Icon asChild color="fg.subtle">
                                 {link.icon}
                             </Icon>
-                            {link.label}
+                            {isSidebarOpen && link.label}
                         </Button>
                     </Link>
                 )

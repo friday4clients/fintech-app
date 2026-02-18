@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${dmSans.variable} antialiased`}
+        className={`${inter.className} ${dmSans.variable} antialiased`}
       >
         <Provider>
           <LayoutSplitter>

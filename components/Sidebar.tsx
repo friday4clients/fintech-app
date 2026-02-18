@@ -1,42 +1,52 @@
+"use client"
+
 import { Box, Flex, Heading, Icon, IconButton, ScrollArea, Separator, Stack } from "@chakra-ui/react"
 import SiteLogo from "./SiteLogo";
 import { SidebarLeft } from "iconsax-reactjs";
 import AccountSwitcher from "./AccountSwitcher";
 import { BottomSibarLinks, TopSidebarLinks } from "./SideberLinks";
 import SidebarProfileCard from "./SidebarProfileCard";
+import { useSidebarStore } from "../stores/sidebar.store";
 
 const Sidebar = () => {
+    const { isSidebarOpen, setSidebarOpen, toggleSidebar } = useSidebarStore()
     return (
         <Stack gap="0" w="full" h="full" overflow="hidden" justify="start">
             {/* site logo */}
             <Box>
-                <Flex h={14} p="4" pl="6" justify="space-between" align="center">
-                    <Flex gap="3" align="center">
+                <Flex h={14} p="4" pl="7" justify="space-between" align="center">
+                    <Flex gap="3" align="center" onClick={() => !isSidebarOpen && setSidebarOpen(true)} cursor={!isSidebarOpen ? "pointer" : "default"}>
                         <Icon color="acccent">
                             <SiteLogo />
                         </Icon>
-                        <Heading size="sm">Canvas</Heading>
+                        {isSidebarOpen && <Heading size="sm">Canvas</Heading>}
                     </Flex>
 
-                    <Icon
-                        color="gray.400"
-                        cursor='pointer'
-                        rounded="sm"
-                        p="0.5"
-                        size="lg"
-                        border='sm'
-                        borderColor="gray.200"
-                        _hover={{ bg: "gray.50" }}
-                    >
-                        <SidebarLeft />
-                    </Icon>
+                    {isSidebarOpen && (
+                        <Icon
+                            color="gray.400"
+                            cursor='pointer'
+                            rounded="sm"
+                            p="0.5"
+                            size="lg"
+                            border='sm'
+                            borderColor="gray.200"
+                            _hover={{ bg: "gray.50" }}
+                            onClick={toggleSidebar}
+                        >
+                            <SidebarLeft />
+                        </Icon>
+                    )}
                 </Flex>
-                <Separator />
-
-                {/* account switcher */}
-                <Box p="4">
-                    <AccountSwitcher />
-                </Box>
+                {isSidebarOpen && (
+                    <>
+                        <Separator />
+                        {/* account switcher */}
+                        <Box p="4">
+                            <AccountSwitcher />
+                        </Box>
+                    </>
+                )}
             </Box>
 
             <ScrollArea.Root flex="2" size="xs">
