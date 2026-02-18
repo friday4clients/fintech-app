@@ -12,7 +12,7 @@ export default function QuickAccess() {
         return [
             { label: "Legal documents", desc: "View legal documents", href: "", Icon: DocumentValidationIcon, disabled: false },
             { label: "Invite LPs", desc: "Invite LPs to your fund", href: "", Icon: UserMultipleIcon, disabled: false },
-            { label: "Capital call", desc: "Issue capital call", href: "", Icon: BriefCaseIcon, disabled: true },
+            { label: "Capital call", desc: "Issue capital call", href: "", Icon: BriefCaseIcon, disabled: false },
             { label: "Collaborate", desc: "Work with the Fiduciary", href: "", Icon: CollaborationIcon, disabled: false },
         ]
     }, [])

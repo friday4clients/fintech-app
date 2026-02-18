@@ -4,8 +4,10 @@
 import { Avatar, createListCollection, Flex, Icon, Portal, Select, Stack, Text } from "@chakra-ui/react"
 import { ArrowDown2, ArrowUp2 } from "iconsax-reactjs"
 import { useEffectEvent, useMemo, useState } from "react"
+import { useSidebarStore } from "../stores/sidebar.store"
 
 const AccountSwitcher = () => {
+    const { isSidebarOpen } = useSidebarStore()
     const accounts = useMemo(() => {
         return createListCollection({
             items: [
@@ -26,25 +28,25 @@ const AccountSwitcher = () => {
             <Select.Control>
                 <Select.Trigger cursor={"pointer"} w="full" bg="bg.subtle" border="xs" borderColor="border" p="2" rounded="md">
                     <Flex gap="2" align="center" justify={"space-between"} w="full">
-                        <Flex gap="2" align="center">
+                        <Flex gap="2" align="center" justify={isSidebarOpen ? "start" : "center"} w="full">
                             <Avatar.Root size="xs">
                                 <Avatar.Fallback name={selectedAccount.userName} />
                                 <Avatar.Image src={selectedAccount.avatarUrl} />
                             </Avatar.Root>
-                            <Stack gap="0" justify={"center"} >
+                            {isSidebarOpen && <Stack gap="0" justify={"center"} >
                                 <Text fontWeight={"semibold"} color="fg.muted" fontSize="xs">{selectedAccount.userName}</Text>
                                 <Text fontSize="xs" color="fg.subtle">{selectedAccount.walletName}</Text>
-                            </Stack>
+                            </Stack>}
                         </Flex>
                         {/* icon */}
-                        <Stack gap="0" align="center" color="fg">
+                        {isSidebarOpen && <Stack gap="0" align="center" color="fg">
                             <Icon size="sm" >
                                 <ArrowUp2 />
                             </Icon>
                             <Icon size="sm" mt="-2">
                                 <ArrowDown2 />
                             </Icon>
-                        </Stack>
+                        </Stack>}
                     </Flex>
                 </Select.Trigger>
                 {/* <Select.IndicatorGroup>
@@ -56,18 +58,17 @@ const AccountSwitcher = () => {
                     <Select.Content>
                         {accounts.items.map((account) => (
                             <Select.Item item={account} key={account.value}>
-
-                                <Flex gap="2" align="center">
+                                <Flex w="full" gap={isSidebarOpen ? "2" : "0"} align="center" justify={isSidebarOpen ? "start" : "center"}>
                                     <Avatar.Root size="xs">
                                         <Avatar.Fallback name={account.userName} />
                                         <Avatar.Image src={account.avatarUrl} />
                                     </Avatar.Root>
-                                    <Stack gap="0" justify={"center"} >
+                                    {isSidebarOpen && <Stack gap="0" justify={"center"} >
                                         <Text fontWeight={"semibold"} color="fg.muted" fontSize="xs">{account.userName}</Text>
                                         <Text fontSize="xs" color="fg.subtle">{account.walletName}</Text>
-                                    </Stack>
+                                    </Stack>}
                                 </Flex>
-                                <Select.ItemIndicator />
+                                {isSidebarOpen && <Select.ItemIndicator />}
                             </Select.Item>
                         ))}
                     </Select.Content>

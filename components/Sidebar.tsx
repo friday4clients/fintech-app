@@ -38,15 +38,13 @@ const Sidebar = () => {
                         </Icon>
                     )}
                 </Flex>
-                {isSidebarOpen && (
-                    <>
-                        <Separator />
-                        {/* account switcher */}
-                        <Box p="4">
-                            <AccountSwitcher />
-                        </Box>
-                    </>
-                )}
+                <>
+                    <Separator />
+                    {/* account switcher */}
+                    <Box p="4">
+                        <AccountSwitcher />
+                    </Box>
+                </>
             </Box>
 
             <ScrollArea.Root flex="2" size="xs">

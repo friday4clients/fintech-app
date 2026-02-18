@@ -12,7 +12,7 @@ const HeaderActiveLink = () => {
     const links = useMemo(() => {
         return [
             { label: "Home", href: "/", icon: <Home /> },
-            { label: "Capital", href: "/transactions", icon: <MoneyRecive /> },
+            { label: "Capital", href: "/capital", icon: <MoneyRecive /> },
             { label: "Operations", href: "/operations", icon: <AnalysisIcon /> },
             { label: "Cap table", href: "/cap-table", icon: <PieIcon /> },
             { label: "Regulatory", href: "/settings", icon: <File1Icon /> },
