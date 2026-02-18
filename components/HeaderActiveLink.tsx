@@ -29,7 +29,7 @@ const HeaderActiveLink = () => {
     return (
         <Flex gap="2" align="center">
             <Icon size="sm" color="#6B7280">
-                {activeLink?.icon}
+                {activeLink?.icon || <Home />}
             </Icon>
             <Text color="fg.subtle" fontWeight="regular" fontSize="sm">{activeLink?.label}</Text>
         </Flex>

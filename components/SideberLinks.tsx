@@ -12,7 +12,7 @@ const TopSidebarLinks = () => {
     const links = useMemo(() => {
         return [
             { label: "Dashboard", href: "/", icon: <Home /> },
-            { label: "Capital", href: "/transactions", icon: <MoneyRecive /> },
+            { label: "Capital", href: "/capital", icon: <MoneyRecive /> },
             { label: "Operations", href: "/operations", icon: <AnalysisIcon /> },
             { label: "Cap table", href: "/cap-table", icon: <PieIcon /> },
             { label: "Regulatory", href: "/settings", icon: <File1Icon /> },
@@ -31,10 +31,10 @@ const TopSidebarLinks = () => {
 
     return (
         <Stack gap="2">
-            {links.map((link) => {
-                const isActive = path === link.href || (path.startsWith(link.href) && path !== "/");
+            {links.map((link,i) => {
+                const isActive = path === link.href || (path.endsWith(link.href) && path !== "/");
                 return (
-                    <Link href={link.href}>
+                    <Link href={link.href} key={i}>
                         <Button size="md"
                             justifyContent="start"
                             bg={isActive ? "bg.subtle" : ""}
@@ -65,10 +65,10 @@ const BottomSibarLinks = () => {
 
     return (
         <Stack gap="2">
-            {bottomLinks.map((link) => {
-                const isActive = path === link.href || (path.startsWith(link.href) && path !== "/");
+            {bottomLinks.map((link,i) => {
+                const isActive = path === link.href || (path.endsWith(link.href) && path !== "/");
                 return (
-                    <Link href={link.href}>
+                    <Link href={link.href} key={i}>
                         <Button size="md"
                             justifyContent="start"
                             bg={isActive ? "#6B7280" : ""}
