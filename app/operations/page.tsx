@@ -22,7 +22,7 @@ export default function Capital() {
     return (
         <Stack gap="4" h="full" pos="relative">
             <Box>
-                <Heading>Welcome, Tabitha</Heading>
+                <Heading size="2xl">Welcome, Tabitha</Heading>
                 <Text fontSize="xs" color="fg.subtle">Here's an overview of your fund</Text>
             </Box>
 
