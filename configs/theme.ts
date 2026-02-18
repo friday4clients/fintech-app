@@ -9,6 +9,9 @@ const config = defineConfig({
       },
       colors: {
         accent: { value: "#005AE7" },
+        bgGray: {
+          value: "#F9FAFB"
+        }
       },
     },
     semanticTokens: {

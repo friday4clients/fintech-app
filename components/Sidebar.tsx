@@ -41,7 +41,7 @@ const Sidebar = () => {
 
             <ScrollArea.Root flex="2" size="xs">
                 <ScrollArea.Viewport>
-                    <ScrollArea.Content pl="4">
+                    <ScrollArea.Content px="4">
                         <TopSidebarLinks />
                     </ScrollArea.Content>
                 </ScrollArea.Viewport>

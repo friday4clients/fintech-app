@@ -1,5 +1,6 @@
-import { Center, Splitter } from "@chakra-ui/react"
+import { Box, Center, Splitter, Stack } from "@chakra-ui/react"
 import Sidebar from "./Sidebar";
+import LayoutHeader from "./LayoutHeader";
 
 const LayoutSplitter = ({ children }: { children: React.ReactNode }) => {
     return (
@@ -18,10 +19,15 @@ const LayoutSplitter = ({ children }: { children: React.ReactNode }) => {
                 <Sidebar />
             </Splitter.Panel>
 
-            {/* <Splitter.ResizeTrigger id="sidebar:main-page" /> */}
 
-            <Splitter.Panel id="main-page" h="vh">
-                {children}
+            <Splitter.Panel id="main-page" h="vh" pb="4" pr="4" overflowY="hidden">
+                <Stack h="full">
+                    <LayoutHeader />
+
+                    <Box p="6" flex="1" rounded="2xl" bg="bgGray">
+                        {children}
+                    </Box>
+                </Stack>
             </Splitter.Panel>
         </Splitter.Root>
     )
