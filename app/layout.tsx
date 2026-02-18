@@ -12,6 +12,7 @@ const inter = Inter({
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900", "1000"],
 });
 
 export const metadata: Metadata = {
@@ -27,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} ${dmSans.variable} antialiased`}
+        className={`${inter.variable} ${dmSans.variable} antialiased`}
       >
         <Provider>
           <LayoutSplitter>
