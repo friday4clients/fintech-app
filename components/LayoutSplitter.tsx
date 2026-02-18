@@ -7,12 +7,14 @@ import LayoutHeader from "./LayoutHeader";
 import { useSidebarStore } from "@stores/sidebar.store";
 
 const LayoutSplitter = ({ children }: { children: React.ReactNode }) => {
-    const { isSidebarOpen } = useSidebarStore(); 
+    const { isSidebarOpen, _hasHydrated } = useSidebarStore(); 
+
+    if(!_hasHydrated) return null;
 
     return (
         <Splitter.Root
-            defaultSize={[10, 86]}
-            size={isSidebarOpen ? [20, 80] : [6, 94]}
+            defaultSize={[20, 80]}
+            size={_hasHydrated ? (isSidebarOpen ? [20, 80] : [6, 94]) : [20, 80]}
             panels={[
                 { id: "sidebar", collapsible: true, collapsedSize: 5, minSize: 5 },
                 { id: "main-page", minSize: 50 },
