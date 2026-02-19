@@ -11,11 +11,11 @@ import { ArrowRight2 } from "iconsax-reactjs"
 
 export default function TotalLPs() {
     return (
-        <Box spaceY={4} bg="bg" rounded="lg" p="4" h='full'>
-            <Flex justify="space-between">
-                <Heading size="sm" color="fg">Total LPs</Heading>
+        <Box bg="bg" rounded="lg" h='full'>
+            <Flex justify="space-between" h="64px" align={"center"} p="4">
+                <Heading size="sm" color="gray.900" fontWeight={"semibold"}>Total LPs</Heading>
                 <Link href="/">
-                    <Flex align="center" gap="1" fontWeight={"medium"} color="accent">
+                    <Flex align="center" gap="1" fontWeight={"medium"} color="#0029B8">
                         <Text fontSize={"sm"}>View all</Text>
                         <ArrowRight2 size="14" />
                     </Flex>
@@ -23,41 +23,42 @@ export default function TotalLPs() {
             </Flex>
 
             {/* table */}
-            <Table.Root size="md">
-                <Table.Header>
-                    <Table.Row>
-                        <Table.ColumnHeader color="gray.500" bg="bg.subtle" border="none">LP</Table.ColumnHeader>
-                        <Table.ColumnHeader color="gray.500" bg="bg.subtle" border="none">COMMITTED</Table.ColumnHeader>
-                        <Table.ColumnHeader color="gray.500" bg="bg.subtle" border="none" textAlign="end">FUNDED</Table.ColumnHeader>
-                        <Table.ColumnHeader color="gray.500" bg="bg.subtle" border="none" textAlign="end">OWNERSHIP</Table.ColumnHeader>
-                        <Table.ColumnHeader color="gray.500" bg="bg.subtle" border="none" textAlign="end">STATUS</Table.ColumnHeader>
-                    </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                    <For each={[]}
-                        fallback={
-                            <Table.Row>
-                                <Table.Cell border="none" colSpan={5}>
-                                    <Stack h="200px" align="center" justify="center">
-                                        <Image h="57px" src="/no-data-available-fallback.png" alt="Empty state" />
-                                        <Heading size="sm" color="fg.muted">No data available</Heading>
-                                    </Stack>
-                                </Table.Cell>
-                            </Table.Row>
-                        }>
-                        {(variant) => (
-                            items.map((item) => (
-                                <Table.Row key={item.id}>
-                                    <Table.Cell border="none">{item.name}</Table.Cell>
-                                    <Table.Cell border="none">{item.category}</Table.Cell>
-                                    <Table.Cell border="none" textAlign="end">{item.price}</Table.Cell>
+            <Table.ScrollArea p="4" pt="0">
+                <Table.Root size="md">
+                    <Table.Header h="49px">
+                        <Table.Row>
+                            <Table.ColumnHeader w={"148px"} color="gray.500" bg="gray.100" border="none">LP</Table.ColumnHeader>
+                            <Table.ColumnHeader w={"148px"} color="gray.500" bg="gray.100" border="none">COMMITTED</Table.ColumnHeader>
+                            <Table.ColumnHeader w={"148px"} color="gray.500" bg="gray.100" border="none" textAlign="end">FUNDED</Table.ColumnHeader>
+                            <Table.ColumnHeader w={"148px"} color="gray.500" bg="gray.100" border="none" textAlign="end">OWNERSHIP</Table.ColumnHeader>
+                            <Table.ColumnHeader w={"148px"} color="gray.500" bg="gray.100" border="none" textAlign="end">STATUS</Table.ColumnHeader>
+                        </Table.Row>
+                    </Table.Header>
+                    <Table.Body>
+                        <For each={[]}
+                            fallback={
+                                <Table.Row>
+                                    <Table.Cell border="none" colSpan={5}>
+                                        <Stack h="200px" align="center" justify="center">
+                                            <Image h="57px" src="/no-data-available-fallback.png" alt="Empty state" />
+                                            <Heading size="sm" color="fg.muted">No data available</Heading>
+                                        </Stack>
+                                    </Table.Cell>
                                 </Table.Row>
-                            ))
-                        )}
-                    </For>
-                </Table.Body>
-            </Table.Root>
-
+                            }>
+                            {(variant) => (
+                                items.map((item) => (
+                                    <Table.Row key={item.id}>
+                                        <Table.Cell border="none">{item.name}</Table.Cell>
+                                        <Table.Cell border="none">{item.category}</Table.Cell>
+                                        <Table.Cell border="none" textAlign="end">{item.price}</Table.Cell>
+                                    </Table.Row>
+                                ))
+                            )}
+                        </For>
+                    </Table.Body>
+                </Table.Root>
+            </Table.ScrollArea>
 
         </Box >
     )

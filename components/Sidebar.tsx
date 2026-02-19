@@ -1,6 +1,6 @@
 "use client"
 
-import { Box, Flex, Heading, Icon, IconButton, ScrollArea, Separator, Stack } from "@chakra-ui/react"
+import { Box, Flex, Heading, Icon, IconButton, ScrollArea, Separator, Stack, Text } from "@chakra-ui/react"
 import SiteLogo from "./SiteLogo";
 import { SidebarLeft } from "iconsax-reactjs";
 import AccountSwitcher from "./AccountSwitcher";
@@ -13,44 +13,63 @@ const Sidebar = () => {
     return (
         <Stack gap="0" w="full" h="full" overflow="hidden" justify="start">
             {/* site logo */}
-            <Box>
-                <Flex h={14} p="4" pl="7" justify="space-between" align="center">
-                    <Flex gap="3" align="center" onClick={() => !isSidebarOpen && setSidebarOpen(true)} cursor={!isSidebarOpen ? "pointer" : "default"}>
-                        <Icon color="acccent">
+            {/* <Box> */}
+            <Flex
+                borderBottom={"100"}
+                h={"72px"}
+                py="1.5em"
+                pb="1.5em"
+                pr="1em"
+                pl="1.5em"
+                gap="10px"
+                justify="space-between"
+                align="center"
+            >
+                <Flex
+                    gap="11px"
+                    w="172px"
+                    py="1em"
+                    px="1.5em"
+                    align="center"
+                    onClick={() => !isSidebarOpen && setSidebarOpen(true)}
+                    cursor={!isSidebarOpen ? "pointer" : "default"}
+                >
+                    <Flex
+                        gap="12px"
+                        align={"center"}
+                    >
+                        <Icon color="acccent" boxSize={"20px"}>
                             <SiteLogo />
                         </Icon>
-                        {isSidebarOpen && <Heading size="sm">Canvas</Heading>}
+                        {isSidebarOpen && <Text color="gray.900" fontSize={"1em"} fontWeight={"medium"}>Canvas</Text>}
                     </Flex>
-
-                    {isSidebarOpen && (
-                        <Icon
-                            color="gray.400"
-                            cursor='pointer'
-                            rounded="sm"
-                            p="0.5"
-                            size="lg"
-                            border='sm'
-                            borderColor="gray.200"
-                            _hover={{ bg: "gray.50" }}
-                            onClick={toggleSidebar}
-                        >
-                            <SidebarLeft />
-                        </Icon>
-                    )}
                 </Flex>
-                <>
-                    <Separator />
-                    {/* account switcher */}
-                    <Box p="4">
-                        <AccountSwitcher />
-                    </Box>
-                </>
-            </Box>
+
+                {isSidebarOpen && (
+                    <Icon
+                        color="gray.200"
+                        cursor='pointer'
+                        rounded="sm"
+                        p="0.5"
+                        boxSize={"24px"}
+                        border='sm'
+                        borderColor="gray.200"
+                        _hover={{ bg: "gray.50" }}
+                        onClick={toggleSidebar}
+                    >
+                        <SidebarLeft />
+                    </Icon>
+                )}
+            </Flex>
+
 
             <ScrollArea.Root flex="2" size="xs">
                 <ScrollArea.Viewport>
-                    <ScrollArea.Content px="4">
-                        <TopSidebarLinks />
+                    <ScrollArea.Content p="4" pt="0" pos="relative">
+                        {/* <Stack> */}
+                            <AccountSwitcher />
+                            <TopSidebarLinks />
+                        {/* </Stack> */}
                     </ScrollArea.Content>
                 </ScrollArea.Viewport>
                 <ScrollArea.Scrollbar>
@@ -60,11 +79,10 @@ const Sidebar = () => {
             </ScrollArea.Root>
 
 
-            <Stack gap="2" justifySelf={"end"} px="4" flex="1" justify={"end"}>
-                <BottomSibarLinks />
-                <Separator />
-                <SidebarProfileCard />
-            </Stack>
+            <BottomSibarLinks />
+            <SidebarProfileCard />
+            {/* <Stack bg="blue.300" gap="2" justifySelf={"end"} px="4" flex="0" justify={"end"}>
+            </Stack> */}
         </Stack>
     )
 }

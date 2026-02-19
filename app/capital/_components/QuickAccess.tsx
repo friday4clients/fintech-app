@@ -4,7 +4,7 @@ import { Box, Flex, Heading, Icon } from "@chakra-ui/react"
 import { Stack, Text } from "@chakra-ui/react"
 import { useMemo } from "react"
 import Link from "next/link"
-import { ArrowRight2 } from "iconsax-reactjs"
+import { ArrowRight, ArrowRight2 } from "iconsax-reactjs"
 import { DocumentValidationIcon, UserMultipleIcon, BriefCaseIcon, CollaborationIcon } from "@components/customIcons"
 
 export default function QuickAccess() {
@@ -17,12 +17,14 @@ export default function QuickAccess() {
         ]
     }, [])
     return (
-        <Box spaceY={4} bg="bg" rounded="lg" p="4">
-            <Heading size="sm" color="fg">Quick Access</Heading>
+        <Box bg="bg" rounded="lg">
+            <Flex justify="space-between" h="64px" align={"center"} p="4">
+                <Heading size="sm" color="fg">Quick Access</Heading>
+            </Flex>
 
 
-            {/* quick links */}
-            <Stack gap="2">
+                {/* quick links */}
+            <Stack gap="2" p="4" pt="0">
                 {links.map((link, index) => (
                     <Link href={link.href} key={index}
                         style={{ pointerEvents: link.disabled ? "none" : "auto" }}>
@@ -34,20 +36,20 @@ export default function QuickAccess() {
                             bg={link.disabled ? "bg.muted" : "bg"}
                             gap="4"
                             p="4"
-                            border="sm"
-                            borderColor="border"
+                            h="80px"
+                            border="gray.100"
                             _hover={{ bg: "bg.subtle" }}
                         >
                             <Flex gap="2" align="center">
-                                <link.Icon boxSize="48px" bg="bg.subtle" p="3" rounded="md" color="fg.muted" />
+                                <link.Icon boxSize="48px" bg="gray.50" p="3" rounded="md" color="gray.600" />
                                 <Stack gap="0">
-                                    <Heading size="sm" color="fg.muted">{link.label}</Heading>
+                                    <Heading size="sm" fontWeight={"medium"} color="gray.800">{link.label}</Heading>
                                     <Text fontSize="xs" color="fg.subtle">{link.desc}</Text>
                                 </Stack>
                             </Flex>
 
-                            <Icon size="sm" color="fg.muted">
-                                <ArrowRight2 />
+                            <Icon size="sm" color="fg.subtle">
+                                <ArrowRight />
                             </Icon>
                         </Flex>
                     </Link>

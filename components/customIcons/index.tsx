@@ -102,18 +102,35 @@ export const DocumentValidationIcon = createIcon({
     )
 });
 
-export const UserMultipleIcon = createIcon({
+export const UserMultipleIcon2 = createIcon({
     displayName: "UserMultipleIcon",
     viewBox: "0 0 24 24",
     defaultProps: {
         color: "fg.muted",
     },
     path: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18.6161 20H19.1063C20.2561 20 21.1707 19.4761 21.9919 18.7436C24.078 16.8826 19.1741 15 17.5 15M15.5 5.06877C15.7271 5.02373 15.9629 5 16.2048 5C18.0247 5 19.5 6.34315 19.5 8C19.5 9.65685 18.0247 11 16.2048 11C15.9629 11 15.7271 10.9763 15.5 10.9312" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            <path d="M4.48131 16.1112C3.30234 16.743 0.211137 18.0331 2.09388 19.6474C3.01359 20.436 4.03791 21 5.32572 21H12.6743C13.9621 21 14.9864 20.436 15.9061 19.6474C17.7889 18.0331 14.6977 16.743 13.5187 16.1112C10.754 14.6296 7.24599 14.6296 4.48131 16.1112Z" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M13 7.5C13 9.70914 11.2091 11.5 9 11.5C6.79086 11.5 5 9.70914 5 7.5C5 5.29086 6.79086 3.5 9 3.5C11.2091 3.5 13 5.29086 13 7.5Z" stroke="currentColor" strokeWidth="1.5" />
+        <svg fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.6161 20H19.1063C20.2561 20 21.1707 19.4761 21.9919 18.7436C24.078 16.8826 19.1741 15 17.5 15M15.5 5.06877C15.7271 5.02373 15.9629 5 16.2048 5C18.0247 5 19.5 6.34315 19.5 8C19.5 9.65685 18.0247 11 16.2048 11C15.9629 11 15.7271 10.9763 15.5 10.9312" stroke="#374151" stroke-width="1.5" stroke-linecap="round" />
+            <path d="M4.48131 16.1112C3.30234 16.743 0.211137 18.0331 2.09388 19.6474C3.01359 20.436 4.03791 21 5.32572 21H12.6743C13.9621 21 14.9864 20.436 15.9061 19.6474C17.7889 18.0331 14.6977 16.743 13.5187 16.1112C10.754 14.6296 7.24599 14.6296 4.48131 16.1112Z" stroke="#374151" stroke-width="1.5" />
+            <path d="M13 7.5C13 9.70914 11.2091 11.5 9 11.5C6.79086 11.5 5 9.70914 5 7.5C5 5.29086 6.79086 3.5 9 3.5C11.2091 3.5 13 5.29086 13 7.5Z" stroke="#374151" stroke-width="1.5" />
         </svg>
+
+    )
+});
+
+export const UserMultipleIcon = createIcon({
+    displayName: "UserMultipleIcon",
+    viewBox: "0 0 18 18",
+    defaultProps: {
+        color: "fg.muted",
+    },
+    path: (
+        <svg fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.9621 15H14.3297C15.1921 15 15.878 14.6071 16.4939 14.0577C18.0585 12.6619 14.3806 11.25 13.125 11.25M11.625 3.80158C11.7953 3.7678 11.9722 3.75 12.1536 3.75C13.5185 3.75 14.625 4.75736 14.625 6C14.625 7.24264 13.5185 8.25 12.1536 8.25C11.9722 8.25 11.7953 8.2322 11.625 8.19842" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M3.36098 12.0834C2.47675 12.5572 0.158353 13.5248 1.57041 14.7356C2.26019 15.327 3.02843 15.75 3.99429 15.75H9.50571C10.4716 15.75 11.2398 15.327 11.9296 14.7356C13.3416 13.5248 11.0232 12.5572 10.139 12.0834C8.06551 10.9722 5.43449 10.9722 3.36098 12.0834Z" stroke="currentColor" strokeWidth="1.5" />
+            <path d="M9.75 5.625C9.75 7.28185 8.40685 8.625 6.75 8.625C5.09315 8.625 3.75 7.28185 3.75 5.625C3.75 3.96815 5.09315 2.625 6.75 2.625C8.40685 2.625 9.75 3.96815 9.75 5.625Z" stroke="currentColor" strokeWidth="1.5" />
+        </svg>
+
     )
 });
 
@@ -187,12 +204,13 @@ export const AnalysisIcon = createIcon({
         color: "fg.muted",
     },
     path: (
-        <svg width="18" color="inherit" stroke="currentColor" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.75 15.75H7.5C5.02513 15.75 3.78769 15.75 3.01884 14.9812C2.25 14.2123 2.25 12.9749 2.25 10.5V2.25" stroke="inherit" strokeWidth="1.2" strokeLinecap="round" />
-            <path d="M5.25 3H6" stroke="inherit" strokeWidth="1" strokeLinecap="round" />
-            <path d="M5.25 5.25H8.25" stroke="inherit" strokeWidth="1" strokeLinecap="round" />
-            <path d="M3.75 15C4.5532 13.5398 5.64209 9.76415 7.72971 9.76415C9.17258 9.76415 9.54625 11.6038 10.9602 11.6038C13.3929 11.6038 13.0403 7.5 15.75 7.5" stroke="inherit" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.75 15.75H7.5C5.02513 15.75 3.78769 15.75 3.01884 14.9812C2.25 14.2123 2.25 12.9749 2.25 10.5V2.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M5.25 3H6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M5.25 5.25H8.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M3.75 15C4.5532 13.5398 5.64209 9.76415 7.72971 9.76415C9.17258 9.76415 9.54625 11.6038 10.9602 11.6038C13.3929 11.6038 13.0403 7.5 15.75 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
+
     )
 })
 

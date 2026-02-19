@@ -9,16 +9,16 @@ import { useRef } from "react"
 
 export default function NavTrend() {
     return (
-        <Box spaceY={4} bg="bg" rounded="lg" p="4">
-            <Heading size="sm" color="fg.muted">NAV trend</Heading>
+        <Stack gap={4} bg="bg" rounded="lg" p="6" h="310px">
+            <Heading size="sm" fontWeight="semibold" color="fg.muted">NAV trend</Heading>
 
             {/* status */}
             <Flex gap="4">
-                <Status.Root color="fg.muted" fontWeight={"medium"}>
+                <Status.Root color="gray.600" fontWeight={"normal"}>
                     <Status.Indicator bg="#72C2FF" />
                     NAV ($M)
                 </Status.Root>
-                <Status.Root color="fg.muted" fontWeight={"medium"}>
+                <Status.Root color="gray.600" fontWeight={"normal"}>
                     <Status.Indicator bg="#0048B9" />
                     Target ($M)
                 </Status.Root>
@@ -26,7 +26,7 @@ export default function NavTrend() {
 
             {/* chart */}
             <NavTrendChart />
-        </Box>
+        </Stack>
     )
 }
 
@@ -68,16 +68,20 @@ const NavTrendChart = () => {
     })
 
     return (
-        <Box pos="relative">
-
-            <Chart.Root maxH="sm" chart={chart}>
+        <Box pos="relative" h="70%">
+            <Chart.Root maxH="full" chart={chart}
+                css={{
+                    "& .recharts-cartesian-axis-tick-value": {
+                        fill: "#999999 !important",
+                    },
+                }}>
                 <LineChart data={chart.data}>
                     <XAxis
                         axisLine={false}
                         tickLine={false}
                         dataKey="month"
                         tickFormatter={(value) => value.slice(0, 3)}
-                        tickMargin={10}
+                        // tickMargin={10}
                         stroke="currentColor"
                     />
                     <YAxis
@@ -87,6 +91,7 @@ const NavTrendChart = () => {
                         minTickGap={6}
                         stroke="currentColor"
                         dataKey="NAV"
+                        height={"200px"}
                     />
                     {hasData?.current &&
                         <>

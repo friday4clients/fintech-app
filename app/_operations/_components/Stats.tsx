@@ -1,4 +1,4 @@
-import { SimpleGrid, Stat, HStack, Icon, Text, Heading } from "@chakra-ui/react"
+import { SimpleGrid, Stat, HStack, Heading } from "@chakra-ui/react"
 import { MoneyBagIcon, MoneyReceiveIcon, ChartBreakoutIcon, UserMultipleIcon2 } from "@customIcons/index"
 import { useMemo } from "react"
 

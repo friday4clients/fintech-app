@@ -1,4 +1,5 @@
 import { AbsoluteCenter, ButtonGroup, EmptyState, Stack, Button } from "@chakra-ui/react";
+import Link from "next/link";
 
 export default function NotFound() {
     return (
@@ -13,7 +14,9 @@ export default function NotFound() {
                             This feature is currently under development
                         </EmptyState.Description>
                     </Stack>
-                    <Button>Back to home</Button>
+                    <Link href="/">
+                        <Button>Back to home</Button>
+                    </Link>
                 </EmptyState.Content>
             </EmptyState.Root>
         </AbsoluteCenter>

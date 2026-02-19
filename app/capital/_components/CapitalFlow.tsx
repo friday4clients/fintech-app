@@ -9,16 +9,16 @@ import { useRef } from "react"
 
 export default function CapitalFlow() {
     return (
-        <Box spaceY={4} bg="bg" rounded="lg" p="4">
-            <Heading size="sm" color="fg.muted">Capital flow</Heading>
+        <Stack gap={4} bg="bg" rounded="lg" p="6" h="310px">
+            <Heading size="sm" fontWeight="semibold" color="fg.muted">Capital flow</Heading>
 
             {/* status */}
             <Flex gap="4">
-                <Status.Root color="fg.muted" fontWeight={"medium"}>
+                <Status.Root color="gray.600" fontWeight={"normal"}>
                     <Status.Indicator bg="#72C2FF" />
                     Inflows ($M)
                 </Status.Root>
-                <Status.Root color="fg.muted" fontWeight={"medium"}>
+                <Status.Root color="gray.600" fontWeight={"normal"}>
                     <Status.Indicator bg="#0048B9" />
                     Outflows ($M)
                 </Status.Root>
@@ -26,7 +26,7 @@ export default function CapitalFlow() {
 
             {/* chart */}
             <CapitalFlowChart />
-        </Box>
+        </Stack>
     )
 }
 
@@ -68,22 +68,26 @@ const CapitalFlowChart = () => {
     })
 
     return (
-        <Box pos="relative">
+        <Box pos="relative" h="70%">
 
-            <Chart.Root maxH="sm" chart={chart}>
+            <Chart.Root maxH="full" chart={chart} css={{
+                "& .recharts-cartesian-axis-tick-value": {
+                    fill: "#999999 !important",
+                },
+            }}>
                 <LineChart data={chart.data}>
                     <XAxis
                         axisLine={false}
                         tickLine={false}
                         dataKey="month"
                         tickFormatter={(value) => value.slice(0, 3)}
-                        tickMargin={10}
+                        // tickMargin={10}
                         stroke="currentColor"
                     />
                     <YAxis
                         axisLine={false}
                         tickLine={false}
-                        tickMargin={42}
+                        tickMargin={30}
                         minTickGap={6}
                         stroke="currentColor"
                         dataKey="NAV"

@@ -4,21 +4,21 @@ import { AbsoluteCenter, Box, Flex, Heading, Image, Status } from "@chakra-ui/re
 import { Chart, useChart } from "@chakra-ui/charts"
 import { HStack, Stack, Text } from "@chakra-ui/react"
 import type { TooltipContentProps } from "recharts"
-import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts"
+import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts"
 import { useRef } from "react"
 
 export default function NavTrend() {
     return (
-        <Stack gap={4} bg="bg" rounded="lg" p="6" h="310px">
-            <Heading size="sm" fontWeight="semibold" color="fg.muted">NAV trend</Heading>
+        <Box spaceY={4} bg="bg" rounded="lg" p="4">
+            <Heading size="sm" color="fg.muted">NAV trend</Heading>
 
             {/* status */}
             <Flex gap="4">
-                <Status.Root color="gray.600" fontWeight={"normal"}>
+                <Status.Root color="fg.muted" fontWeight={"medium"}>
                     <Status.Indicator bg="#005AE7" />
                     NAV ($M)
                 </Status.Root>
-                <Status.Root color="gray.600" fontWeight={"normal"}>
+                <Status.Root color="fg.muted" fontWeight={"medium"}>
                     <Status.Indicator bg="fg" />
                     Target ($M)
                 </Status.Root>
@@ -26,10 +26,9 @@ export default function NavTrend() {
 
             {/* chart */}
             <NavTrendChart />
-        </Stack>
+        </Box>
     )
 }
-
 
 
 function CustomTooltip(props: Partial<TooltipContentProps<string, string>>) {
@@ -63,13 +62,9 @@ const NavTrendChart = () => {
     })
 
     return (
-        <Box pos="relative" h="70%">
-            <Chart.Root maxH="full" chart={chart}
-                css={{
-                    "& .recharts-cartesian-axis-tick-value": {
-                        fill: "#999999 !important",
-                    },
-                }}>
+        <Box>
+
+            <Chart.Root maxH="sm" chart={chart}>
                 <LineChart data={chart.data}>
                     <CartesianGrid stroke={chart.color("border")} vertical={false} />
                     <XAxis

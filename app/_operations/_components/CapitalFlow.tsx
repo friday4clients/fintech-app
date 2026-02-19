@@ -4,21 +4,21 @@ import { AbsoluteCenter, Box, Flex, Heading, Image, Status } from "@chakra-ui/re
 import { Chart, useChart } from "@chakra-ui/charts"
 import { HStack, Stack, Text } from "@chakra-ui/react"
 import type { TooltipContentProps } from "recharts"
-import { Bar, BarChart, CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts"
 import { useRef } from "react"
 
 export default function CapitalFlow() {
     return (
-        <Stack gap={4} bg="bg" rounded="lg" p="6" h="310px">
-            <Heading size="sm" fontWeight="semibold" color="fg.muted">Capital flow</Heading>
+        <Box spaceY={4} bg="bg" rounded="lg" p="4">
+            <Heading size="sm" color="fg.muted">Capital flow</Heading>
 
             {/* status */}
             <Flex gap="4">
-                <Status.Root color="gray.600" fontWeight={"normal"}>
+                <Status.Root color="fg.muted" fontWeight={"medium"}>
                     <Status.Indicator bg="#005AE7" />
                     Inflows ($M)
                 </Status.Root>
-                <Status.Root color="gray.600" fontWeight={"normal"}>
+                <Status.Root color="fg.muted" fontWeight={"medium"}>
                     <Status.Indicator bg="fg" />
                     Outflows ($M)
                 </Status.Root>
@@ -26,9 +26,10 @@ export default function CapitalFlow() {
 
             {/* chart */}
             <CapitalFlowChart />
-        </Stack>
+        </Box>
     )
 }
+
 
 function CustomTooltip(props: Partial<TooltipContentProps<string, string>>) {
     const { active, payload, label } = props
@@ -58,8 +59,8 @@ const CapitalFlowChart = () => {
     const hasData = useRef(false);
     const chart = useChart({
         data: [
-            { y: 0, inflows: 17, outflows: 10, month: "Jan" },
-            { y: 5, inflows: 11, outflows: 17, month: "Feb" },
+            { y: 0, inflows: 7, outflows: 10, month: "Jan" },
+            { y: 5, inflows: 15, outflows: 5, month: "Feb" },
             { y: 10, inflows: 10, outflows: 20, month: "Mar" },
             { y: 15, inflows: 17, outflows: 5, month: "Apr" },
             { y: 20, inflows: 20, outflows: 18, month: "May" },
@@ -71,56 +72,40 @@ const CapitalFlowChart = () => {
         ],
     })
 
-    return (
-        <Box pos="relative" h="70%">
 
-            <Chart.Root maxH="full" chart={chart} css={{
-                "& .recharts-cartesian-axis-tick-value": {
-                    fill: "#999999 !important",
-                },
-            }}>
+    return (
+        <Box pos="relative">
+            <Chart.Root maxH="sm" chart={chart}>
                 <BarChart data={chart.data}>
                     <CartesianGrid stroke={chart.color("border.muted")} vertical={false} />
                     <XAxis
-                        axisLine={false}
                         tickLine={false}
-                        tickFormatter={(value) => value.slice(0, 3)}
                         dataKey={chart.key("month")}
-                        tickMargin={10}
                         stroke={chart.color("border")}
                     />
-                    <YAxis
-                        dataKey="y"
-                        tickLine={false}
-                        tickMargin={30}
-                        minTickGap={0}
-                        stroke={chart.color("border")} />
+                    <YAxis tickMargin={40} dataKey="y" tickLine={false} stroke={chart.color("border")} />
                     <Tooltip
                         cursor={{ fill: chart.color("bg.muted") }}
                         animationDuration={100}
                         content={<CustomTooltip />}
                     />
                     {/* <Legend
-                                        layout="vertical"
-                                        align="right"
-                                        verticalAlign="top"
-                                        wrapperStyle={{ paddingLeft: 30 }}
-                                        content={<Chart.Legend orientation="vertical" />}
-                                    /> */}
+                        layout="vertical"
+                        align="right"
+                        verticalAlign="top"
+                        wrapperStyle={{ paddingLeft: 30 }}
+                        content={<Chart.Legend orientation="vertical" />}
+                    /> */}
                     {chart.series.map((item) => (
                         <Bar
-                            barSize={12}
                             key={item.name}
                             dataKey={chart.key(item.name)}
                             fill={chart.color(item.color)}
-                            width={4}
-                            strokeWidth={2}
                             radius={[10, 10, 0, 0]}
                         />
                     ))}
                 </BarChart>
             </Chart.Root>
-
         </Box>
 
     )

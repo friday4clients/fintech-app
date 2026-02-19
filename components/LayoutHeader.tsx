@@ -8,13 +8,13 @@ import PortalSwitcher from "./PortalSwitcher";
 const LayoutHeader = () => {
 
     return (
-        <Flex h="14" p="4" justify={"space-between"} w="full">
+        <Flex h="72px" p="4" justify={"space-between"} w="full">
             <HeaderActiveLink />
             <Flex gap="4" align="center" justify={"end"}>
                 <LayoutHeaderSearchbar />
-                <Separator h="full" orientation="vertical" />
+                <Separator h="70%" borderColor="gray.200" orientation="vertical" />
                 <Link href="/">
-                    <IconButton variant="ghost" size="sm">
+                    <IconButton variant="ghost" boxSize="40px" rounded="full" bg="gray.50">
                         <BellIcon />
                     </IconButton>
                 </Link>

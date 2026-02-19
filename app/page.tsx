@@ -4,8 +4,8 @@ import { AbsoluteCenter, Box, Button, EmptyState, Heading, Image, Stack, Text } 
 export default function Home() {
   return (
     <Box h="full" pos="relative">
-      <Heading>Welcome, Tabitha</Heading>
-      <Text fontSize="xs" color="fg.subtle">Here's an overview of your fund</Text>
+      <Heading size="2xl" fontWeight={"bold"} color="gray.900">Welcome, Tabitha</Heading>
+      <Text fontSize="sm" color="gray.500">Here's an overview of your fund</Text>
 
       <AbsoluteCenter>
         <EmptyState.Root>
@@ -14,8 +14,8 @@ export default function Home() {
               <Image src="/folder.png" mx="auto" boxSize={"20"} />
             </EmptyState.Indicator>
             <Stack textAlign="center" gap="0">
-              <EmptyState.Title fontSize="sm">No entity setup yet</EmptyState.Title>
-              <EmptyState.Description fontSize="xs">
+              <EmptyState.Title fontSize="md" fontWeight={"semibold"} color="gray.900">No entity setup yet</EmptyState.Title>
+              <EmptyState.Description fontSize="sm" color="gray.500">
                 No entity setup yet. Create one to get started.
               </EmptyState.Description>
             </Stack>

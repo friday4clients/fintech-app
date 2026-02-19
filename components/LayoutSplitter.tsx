@@ -1,41 +1,43 @@
 "use client"
 
-
-import { Box, Center, ScrollArea, Splitter, Stack } from "@chakra-ui/react"
+import { Box, Flex, ScrollArea, Stack } from "@chakra-ui/react"
 import Sidebar from "./Sidebar";
 import LayoutHeader from "./LayoutHeader";
 import { useSidebarStore } from "@stores/sidebar.store";
 
-const LayoutSplitter = ({ children }: { children: React.ReactNode }) => {
-    const { isSidebarOpen, _hasHydrated } = useSidebarStore(); 
+// 246px / 16 = 15.375em (expanded)
+// 105px / 16 = 6.5625em (collapsed)
+const SIDEBAR_EXPANDED_WIDTH = "15.375em";
+const SIDEBAR_COLLAPSED_WIDTH = "6.5625em";
 
-    if(!_hasHydrated) return null;
+const LayoutSplitter = ({ children }: { children: React.ReactNode }) => {
+    const { isSidebarOpen, _hasHydrated } = useSidebarStore();
+
+    if (!_hasHydrated) return null;
+
+    const sidebarWidth = isSidebarOpen ? SIDEBAR_EXPANDED_WIDTH : SIDEBAR_COLLAPSED_WIDTH;
 
     return (
-        <Splitter.Root
-            defaultSize={[20, 80]}
-            size={_hasHydrated ? (isSidebarOpen ? [20, 80] : [6, 94]) : [20, 80]}
-            panels={[
-                { id: "sidebar", collapsible: true, collapsedSize: 5, minSize: 5 },
-                { id: "main-page", minSize: 50 },
-            ]}
-            minH="vh"
-            maxH="vh"
-            overflow={"hidden"}
-        >
-            {/* Sidebar panel */}
-            <Splitter.Panel id="sidebar" h="vh">
+        <Flex h="100vh" overflow="hidden" gap="10px">
+            {/* Sidebar */}
+            <Box
+                w={sidebarWidth}
+                minW={sidebarWidth}
+                h="full"
+                overflow="hidden"
+                transition="width 0.2s ease, min-width 0.2s ease"
+            >
                 <Sidebar />
-            </Splitter.Panel>
+            </Box>
 
-
-            <Splitter.Panel id="main-page" h="vh" pb="4" pr="4" overflowY="hidden">
+            {/* Main content */}
+            <Flex flex="1" direction="column" h="vh" overflow="hidden" pb="4" pr="4">
                 <Stack h="full" overflowY="hidden">
                     <LayoutHeader />
 
-                    <ScrollArea.Root size="xs" h="full" w="full" rounded="2xl">
+                    <ScrollArea.Root size="xs" h="full" overflow={"hidden"} w="full" rounded="3xl">
                         <ScrollArea.Viewport>
-                            <ScrollArea.Content p="6" flex="1" rounded="2xl" bg="bgGray">
+                            <ScrollArea.Content p="6" flex="1" rounded="3xl" bg="gray.50">
                                 {children}
                             </ScrollArea.Content>
                         </ScrollArea.Viewport>
@@ -44,10 +46,9 @@ const LayoutSplitter = ({ children }: { children: React.ReactNode }) => {
                         </ScrollArea.Scrollbar>
                         <ScrollArea.Corner />
                     </ScrollArea.Root>
-
                 </Stack>
-            </Splitter.Panel>
-        </Splitter.Root>
+            </Flex>
+        </Flex>
     )
 }
 

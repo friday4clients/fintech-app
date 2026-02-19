@@ -31,19 +31,23 @@ const TopSidebarLinks = () => {
     }, [])
 
     return (
-        <Stack gap="2">
+        <Stack gap="2" align={isSidebarOpen ? "start" : "center"} w="full">
             {links.map((link, i) => {
                 const isActive = path === link.href || (path.endsWith(link.href) && path !== "/");
                 return (
-                    <Link href={link.href} key={i}>
-                        <Button size="md"
+                    <Link href={link.href} key={i}
+                        style={{ width: isSidebarOpen ? "100%" : "42px" }}>
+                        <Button
+                            size="lg"
+                            fontSize="0.875em"
+                            rounded={"lg"}
                             px={isSidebarOpen ? "4" : "0"}
                             justifyContent={isSidebarOpen ? "start" : "center"}
                             bg={isActive ? "bg.subtle" : ""}
                             variant={"ghost"}
-                            color={isActive ? "fg" : "#6B7280"}
+                            color={isActive ? "gray.950" : "gray.500"}
                             w="full">
-                            <link.Icon color={isActive ? isSidebarOpen ? "#6B7280" : "fg" : "#6B7280"} />
+                            <link.Icon boxSize="18px" color={isActive ? isSidebarOpen ? "gray.500" : "gray.950" : "gray.500"} />
                             {isSidebarOpen && link.label}
                         </Button>
                     </Link>
@@ -65,19 +69,23 @@ const BottomSibarLinks = () => {
     }, [])
 
     return (
-        <Stack gap="2">
+        <Stack gap="2" align={isSidebarOpen ? "start" : "center"} w="full" p="4">
             {bottomLinks.map((link, i) => {
                 const isActive = path === link.href || (path.endsWith(link.href) && path !== "/");
                 return (
-                    <Link href={link.href} key={i}>
-                        <Button size="md"
+                    <Link href={link.href} key={i}
+                        style={{ width: isSidebarOpen ? "100%" : "42px" }}>
+                        <Button
+                            size="lg"
+                            fontSize="0.875em"
+                            rounded={"lg"}
                             px={isSidebarOpen ? "4" : "0"}
                             justifyContent={isSidebarOpen ? "start" : "center"}
                             bg={isActive ? "bg.subtle" : ""}
                             variant={"ghost"}
-                            color={isActive ? "fg" : "#6B7280"}
+                            color={isActive ? "gray.950" : "gray.500"}
                             w="full">
-                            <link.Icon color={isActive ? isSidebarOpen ? "#6B7280" : "fg" : "#6B7280"} />
+                            <link.Icon boxSize="18px" color={isActive ? isSidebarOpen ? "gray.500" : "gray.950" : "gray.500"} />
                             {isSidebarOpen && link.label}
                         </Button>
                     </Link>
